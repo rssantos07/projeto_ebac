@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 export const Container = styled.div`
-  background-color: ${cores.textButton};
+  background-color: ${cores.branco};
   font-size: 10px;
   height: 298px;
   text-align: center;

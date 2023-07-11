@@ -3,11 +3,15 @@ import instagram from '../../assets/instagram.svg'
 import facebook from '../../assets/facebook.svg'
 import twitter from '../../assets/twitter.svg'
 import { Container, Image, Paragrafo, Sociais } from './styles'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
     <Container>
-      <Image src={logo} alt=""></Image>
+      <Link to="/">
+        <Image src={logo} alt=""></Image>
+      </Link>
+
       <div>
         <Sociais src={instagram}></Sociais>
         <Sociais src={facebook}></Sociais>

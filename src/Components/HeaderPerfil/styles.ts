@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { cores } from '../../styles'
 
 export const Content = styled.div`
   widht: 100%;
@@ -25,7 +26,28 @@ export const Image = styled.img`
   margin-left: 80px;
 `
 
-export const Apresentacao = styled.img`
-  heiht: 280px;
+export const Apresentacao = styled.div`
   width: 100%;
+  height: 280px;
+
+  div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px 0 32px 0;
+
+    h3 {
+      font-size: 34px;
+      color: ${cores.branco};
+      font-weight: 100;
+      line-height: 38px;
+    }
+    p {
+      font-size: 32px;
+      color: ${cores.branco};
+      font-weight: 900;
+      line-height: 38px;
+    }
+  }
 `

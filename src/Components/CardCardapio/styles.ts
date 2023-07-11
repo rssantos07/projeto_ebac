@@ -3,12 +3,17 @@ import { cores } from '../../styles'
 
 export const Card = styled.div`
   width: 472px;
-  border: 2px solid ${cores.textColor};
+  border: 2px solid ${cores.laranja};
   margin-bottom: 48px;
   margin-right: 80px;
-`
-export const Image = styled.img`
-  max-width: 100%;
+  position: relative;
+
+  > img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
 `
 
 export const Cabecalho = styled.div`
@@ -43,4 +48,9 @@ export const Botao = styled.div`
 `
 export const ImagemBotao = styled.div`
   position: relative;
+`
+export const Infos = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
 `

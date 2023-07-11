@@ -2,8 +2,8 @@ import { createGlobalStyle } from 'styled-components'
 
 export const cores = {
   fundo: '#FFF8F2',
-  textColor: '#E66767',
-  textButton: '#FFEBD9'
+  laranja: '#E66767',
+  branco: '#FFEBD9'
 }
 
 export const GlobalCss = createGlobalStyle`
@@ -17,7 +17,7 @@ export const GlobalCss = createGlobalStyle`
 
     body {
       background:${cores.fundo};
-      color:${cores.textColor};
+      color:${cores.laranja};
     }
     .container {
       max-width: 1024px;

@@ -1,15 +1,8 @@
 import favoritos from '../../assets/estrela.svg'
-import {
-  Botao,
-  Cabecalho,
-  Card,
-  Image,
-  ImagemBotao,
-  Nota,
-  Texto,
-  Titulo
-} from './styles'
+import { Botao, Cabecalho, Card, Infos, Nota, Texto, Titulo } from './styles'
 import Button from '../Botao'
+import Tag from '../../Tag'
+import { TagContainer } from '../../Tag/styles'
 
 type Props = {
   image: string
@@ -17,18 +10,30 @@ type Props = {
   title: string
   rank: number
   description: string
+  id: number
+  destacado: boolean
 }
 
-const CardCardapio = ({ image, country, title, rank, description }: Props) => {
+const CardCardapio = ({
+  image,
+  country,
+  title,
+  rank,
+  description,
+  id,
+  destacado
+}: Props) => {
   return (
     <>
       <Card>
-        <ImagemBotao>
-          <Image src={image} alt={title} />
-          <Button type="button" title="Clique aqui">
-            {country}
-          </Button>
-        </ImagemBotao>
+        <img src={image} alt={title} />
+        <Infos>
+          {destacado && (
+            <TagContainer key="destacado">Destaque da semana</TagContainer>
+          )}
+          <TagContainer>{country}</TagContainer>
+        </Infos>
+
         <Cabecalho>
           <Titulo>{title}</Titulo>
           <Nota>
@@ -38,7 +43,7 @@ const CardCardapio = ({ image, country, title, rank, description }: Props) => {
         </Cabecalho>
         <Texto>{description}</Texto>
         <Botao>
-          <Button type="link" to="/perfil" title="Clique aqui">
+          <Button type="link" to={`/perfil/${id}`} title="Clique aqui">
             Saiba mais
           </Button>
         </Botao>

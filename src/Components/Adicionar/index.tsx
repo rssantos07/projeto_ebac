@@ -1,9 +1,14 @@
 import { Botao } from './styles'
 
-const AdicionarButton = () => {
+type Props = {
+  onClick: () => void
+  texto: string
+}
+
+const AdicionarButton = ({ onClick, texto }: Props) => {
   return (
     <>
-      <Botao>Adicionar ao carrinho</Botao>
+      <Botao onClick={onClick}>{texto}</Botao>
     </>
   )
 }

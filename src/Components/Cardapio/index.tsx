@@ -1,23 +1,29 @@
-import Dish from '../../models/Pratos'
+import { Restaurante } from '../../pages/Home'
 import CardCardapio from '../CardCardapio'
 import { List } from './styles'
 
-export type Props = {
-  dishs: Dish[]
+type Props = {
+  dishs: Restaurante[]
 }
 
 const Cardapio = ({ dishs }: Props) => {
+  const getOferta = (dishs: Restaurante) => {
+    return dishs.destacado
+  }
   return (
     <List>
       {dishs.map((dish) => (
-        <CardCardapio
-          key={dish.id}
-          image={dish.image}
-          country={dish.country}
-          title={dish.title}
-          rank={dish.rank}
-          description={dish.description}
-        />
+        <li key={dish.id}>
+          <CardCardapio
+            id={dish.id}
+            image={dish.capa}
+            country={dish.tipo}
+            title={dish.titulo}
+            rank={dish.avaliacao}
+            description={dish.descricao}
+            destacado={getOferta(dish)}
+          />
+        </li>
       ))}
     </List>
   )
