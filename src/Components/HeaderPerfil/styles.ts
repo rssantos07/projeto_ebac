@@ -51,3 +51,12 @@ export const Apresentacao = styled.div`
     }
   }
 `
+export const CartButton = styled.a`
+  display: flex;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 900;
+  img {
+    margin-left: 16px;
+  }
+`

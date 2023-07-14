@@ -11,6 +11,8 @@ import {
 import close from '../../assets/close.svg'
 import { CardapioItem } from '../../pages/Home'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
 
 type Props = {
   items: CardapioItem[]
@@ -69,6 +71,12 @@ const PerfilCard = ({ items }: Props) => {
     })
   }
 
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add([modal]))
+    dispatch(open())
+  }
   return (
     <>
       <Cards>
@@ -108,14 +116,17 @@ const PerfilCard = ({ items }: Props) => {
               <p>Serve: {modal.porcao}</p>
               <div className="button">
                 <AdicionarButton
-                  onClick={() => handleModalOpen(modal)}
+                  onClick={() => {
+                    addToCart()
+                    closeModal()
+                  }}
                   texto={`Adicionar ao carrinho - ${formataPreco(modal.preco)}`}
                 />
               </div>
             </div>
           </header>
         </ModalContent>
-        <div className="overlay"></div>
+        <div className="overlay" onClick={closeModal}></div>
       </Modal>
     </>
   )

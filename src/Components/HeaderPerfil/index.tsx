@@ -1,14 +1,23 @@
 import { Link } from 'react-router-dom'
 import fundo from '../../assets/fundo.svg'
 import logo from '../../assets/logo.svg'
-import { Content, Paragrafo, Image, Apresentacao } from './styles'
+import { Content, Paragrafo, Image, Apresentacao, CartButton } from './styles'
 import { Restaurante } from '../../pages/Home'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
+import { open } from '../../store/reducers/cart'
 
 type Props = {
   restaurante: Restaurante
 }
 
 const HeaderPerfil = ({ restaurante }: Props) => {
+  const dispatch = useDispatch()
+  const { items } = useSelector((state: RootReducer) => state.cart)
+
+  const openCart = () => {
+    dispatch(open())
+  }
   return (
     <>
       <Content style={{ backgroundImage: `url(${fundo})` }}>
@@ -17,7 +26,9 @@ const HeaderPerfil = ({ restaurante }: Props) => {
           <Image src={logo} alt=""></Image>
         </Link>
 
-        <Paragrafo>0 produto(s) no carrinho</Paragrafo>
+        <CartButton onClick={openCart}>
+          {items.length} produto(s) no carrinho
+        </CartButton>
       </Content>
       <Apresentacao
         style={{

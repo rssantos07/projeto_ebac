@@ -1,7 +1,7 @@
 import { Botao } from './styles'
 
 type Props = {
-  onClick: () => void
+  onClick?: () => void
   texto: string
 }
 
