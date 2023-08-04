@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { color } from '../../styles'
 
 export const Card = styled.div`
   width: 472px;
-  border: 2px solid ${cores.laranja};
+  border: 2px solid ${color.orange};
   margin-bottom: 48px;
   margin-right: 80px;
   position: relative;
@@ -43,14 +43,23 @@ export const Texto = styled.p`
   font-size: 14px;
   margin-bottom: 16px;
 `
-export const Botao = styled.div`
+export const Bottom = styled.div`
   margin-bottom: 16px;
 `
-export const ImagemBotao = styled.div`
+export const ImagemBottom = styled.div`
   position: relative;
 `
 export const Infos = styled.div`
   position: absolute;
   top: 16px;
   right: 16px;
+`
+export const Tag = styled.div`
+  background-color: ${color.orange};
+  color: ${color.white};
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 10px;
+  display: inline-block;
+  margin-left: 8px;
 `

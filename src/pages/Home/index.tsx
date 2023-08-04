@@ -1,27 +1,8 @@
-import Cardapio from '../../Components/Cardapio'
+import Menu from '../../Components/Menu'
 import Header from '../../Components/Header'
+import Loader from '../../Components/Loaders'
 
 import { useGetFeaturedRestaranteQuery } from '../../services/api'
-
-export interface CardapioItem {
-  foto: string
-  preco: number
-  id: number
-  nome: string
-  descricao: string
-  porcao: string
-}
-
-export type Restaurante = {
-  id: number
-  titulo: string
-  destacado: boolean
-  tipo: string
-  avaliacao: number
-  descricao: string
-  capa: string
-  cardapio: CardapioItem[]
-}
 
 const Home = () => {
   const { data: restaurante } = useGetFeaturedRestaranteQuery()
@@ -29,10 +10,10 @@ const Home = () => {
     return (
       <>
         <Header />
-        <Cardapio dishs={restaurante} />
+        <Menu dishs={restaurante} />
       </>
     )
   }
-  return <h4>Carregando...</h4>
+  return <Loader />
 }
 export default Home

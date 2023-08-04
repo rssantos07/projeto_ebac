@@ -1,32 +1,17 @@
-import AdicionarButton from '../Adicionar'
-import {
-  Card,
-  Cards,
-  Image,
-  Modal,
-  ModalContent,
-  Paragrafo,
-  Titulo
-} from './styles'
+import ToAddButton from '../ToAdd'
+import * as S from './styles'
 import close from '../../assets/close.svg'
-import { CardapioItem } from '../../pages/Home'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { add, open } from '../../store/reducers/cart'
+import { formataPreco } from '../../utils'
 
 type Props = {
-  items: CardapioItem[]
+  items: MenuItem[]
 }
 
-interface ModalState extends CardapioItem {
+interface ModalState extends MenuItem {
   isVisible: boolean
-}
-
-export const formataPreco = (preco = 0) => {
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL'
-  }).format(preco)
 }
 
 const PerfilCard = ({ items }: Props) => {
@@ -47,7 +32,7 @@ const PerfilCard = ({ items }: Props) => {
     porcao: ''
   })
 
-  const handleModalOpen = (item: CardapioItem) => {
+  const handleModalOpen = (item: MenuItem) => {
     setModal({
       isVisible: true,
       foto: item.foto,
@@ -79,21 +64,24 @@ const PerfilCard = ({ items }: Props) => {
   }
   return (
     <>
-      <Cards>
+      <S.Cards>
         {items.map((media) => (
-          <Card key={media.id}>
-            <Image src={media.foto} alt="" />
-            <Titulo>{media.nome}</Titulo>
-            <Paragrafo>{getDescricao(media.descricao)}</Paragrafo>
-            <AdicionarButton
+          <S.Card key={media.id}>
+            <S.Image src={media.foto} alt="" />
+            <S.Title>{media.nome}</S.Title>
+            <S.Text>{getDescricao(media.descricao)}</S.Text>
+            <ToAddButton
+              type="button"
               onClick={() => handleModalOpen(media)}
-              texto={`Mais detalhes`}
-            />
-          </Card>
+              title={`Mais detalhes`}
+            >
+              Mais detalhes
+            </ToAddButton>
+          </S.Card>
         ))}
-      </Cards>
-      <Modal className={modal.isVisible ? 'visible' : ''}>
-        <ModalContent className="container">
+      </S.Cards>
+      <S.Modal className={modal.isVisible ? 'visible' : ''}>
+        <S.ModalContent className="container">
           <div>
             <img
               className="fechar"
@@ -115,19 +103,21 @@ const PerfilCard = ({ items }: Props) => {
               <p>{modal.descricao}</p>
               <p>Serve: {modal.porcao}</p>
               <div className="button">
-                <AdicionarButton
+                <ToAddButton
+                  type="button"
                   onClick={() => {
                     addToCart()
                     closeModal()
                   }}
-                  texto={`Adicionar ao carrinho - ${formataPreco(modal.preco)}`}
-                />
+                >{`Adicionar ao carrinho - ${formataPreco(
+                  modal.preco
+                )}`}</ToAddButton>
               </div>
             </div>
           </header>
-        </ModalContent>
+        </S.ModalContent>
         <div className="overlay" onClick={closeModal}></div>
-      </Modal>
+      </S.Modal>
     </>
   )
 }

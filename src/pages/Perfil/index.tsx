@@ -2,23 +2,28 @@ import { useParams } from 'react-router-dom'
 import HeaderPerfil from '../../Components/HeaderPerfil'
 import PerfilCard from '../../Components/PerfilCard'
 import { useGetOnDishQuery, useGetOnHeaderQuery } from '../../services/api'
+import Loader from '../../Components/Loaders'
+
+type MenuParams = {
+  id: string
+}
 
 const Perfil = () => {
-  const { id } = useParams()
-  const { data: prato } = useGetOnHeaderQuery(id!)
-  const { data: cardapio } = useGetOnDishQuery(id!)
+  const { id } = useParams() as MenuParams
+  const { data: prato, isLoading } = useGetOnHeaderQuery(id)
+  const { data: cardapio } = useGetOnDishQuery(id)
 
   if (!prato) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   if (!cardapio) {
-    return <h3>Carregando...</h3>
+    return <Loader />
   }
 
   return (
     <>
-      <HeaderPerfil restaurante={prato} />
+      <HeaderPerfil restaurante={prato} isLoading={isLoading} />
       <PerfilCard items={prato.cardapio} />
     </>
   )

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { color } from '../../styles'
 
 export const Content = styled.div`
   widht: 100%;
@@ -17,7 +17,7 @@ export const Links = styled.ul`
   margin-left: 40px;
 `
 
-export const Paragrafo = styled.p`
+export const Text = styled.p`
   font-size: 18px;
   font-weight: 900;
 `
@@ -26,9 +26,11 @@ export const Image = styled.img`
   margin-left: 80px;
 `
 
-export const Apresentacao = styled.div`
+export const Banner = styled.div`
   width: 100%;
   height: 280px;
+  background-size: cover;
+  background-position: right;
 
   div {
     height: 100%;
@@ -39,13 +41,13 @@ export const Apresentacao = styled.div`
 
     h3 {
       font-size: 34px;
-      color: ${cores.branco};
+      color: ${color.white};
       font-weight: 100;
       line-height: 38px;
     }
     p {
       font-size: 32px;
-      color: ${cores.branco};
+      color: ${color.white};
       font-weight: 900;
       line-height: 38px;
     }

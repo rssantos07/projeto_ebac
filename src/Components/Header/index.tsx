@@ -1,17 +1,17 @@
-import { Fundo, Image, Paragrafo } from './styles'
-import imagemFundo from '../../assets/fundo.svg'
+import * as S from './styles'
+import imageBackground from '../../assets/fundo.svg'
 import logo from '../../assets/logo.svg'
 
 const Header = () => {
   return (
-    <Fundo style={{ backgroundImage: `url(${imagemFundo})` }}>
-      <Image src={logo} alt="EFOOD" />
-      <Paragrafo>
+    <S.Container style={{ backgroundImage: `url(${imageBackground})` }}>
+      <S.Image src={logo} alt="EFOOD" />
+      <S.Text>
         Viva experiências gastronômicas
         <br />
         no conforto da sua casa
-      </Paragrafo>
-    </Fundo>
+      </S.Text>
+    </S.Container>
   )
 }
 

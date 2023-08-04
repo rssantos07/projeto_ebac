@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { color } from '../../styles'
 import lixeira from '../../assets/lixeira.svg'
 
 export const Overlay = styled.div`
@@ -27,7 +27,7 @@ export const CartContainer = styled.div`
   }
 `
 export const SideBar = styled.aside`
-  background-color: ${cores.laranja};
+  background-color: ${color.orange};
   padding: 32px 8px 40px 8px;
   max-width: 360px;
   width: 100%;
@@ -35,11 +35,11 @@ export const SideBar = styled.aside`
 `
 export const CartItem = styled.li`
   display: flex;
-  background-color: ${cores.branco};
+  background-color: ${color.white};
   padding: 8px 0;
   max-width: 344px;
   width: 344px;
-  color: ${cores.laranja};
+  color: ${color.orange};
   position: relative;
   margin-bottom: 16px;
 
@@ -73,13 +73,13 @@ export const CartItem = styled.li`
     position: absolute;
     bottom: 8px;
     right: 8px;
-    color: ${cores.laranja};
+    color: ${color.orange};
     cursor: pointer;
   }
 `
 export const Price = styled.div`
   display: flex;
-  color: ${cores.branco};
+  color: ${color.white};
   margin-bottom: 16px;
   margin-top: 40px;
   justify-content: space-between;
@@ -91,5 +91,22 @@ export const Price = styled.div`
     line-weight: 16x;
   }
   span {
+  }
+`
+export const EmptyText = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  img {
+    width: 16px;
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    cursor: pointer;
+  }
+  p {
+    color: ${color.white};
+    text-align: center;
+    padding: 25px;
   }
 `

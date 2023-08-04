@@ -1,48 +1,51 @@
 import { Link } from 'react-router-dom'
-import fundo from '../../assets/fundo.svg'
+import whiteBackground from '../../assets/fundo.svg'
 import logo from '../../assets/logo.svg'
-import { Content, Paragrafo, Image, Apresentacao, CartButton } from './styles'
-import { Restaurante } from '../../pages/Home'
+import * as S from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { open } from '../../store/reducers/cart'
+import Loader from '../Loaders'
 
 type Props = {
   restaurante: Restaurante
+  isLoading: boolean
 }
 
-const HeaderPerfil = ({ restaurante }: Props) => {
+const HeaderPerfil = ({ restaurante, isLoading }: Props) => {
   const dispatch = useDispatch()
   const { items } = useSelector((state: RootReducer) => state.cart)
 
   const openCart = () => {
     dispatch(open())
   }
+
+  if (isLoading) {
+    return <Loader />
+  }
+
   return (
     <>
-      <Content style={{ backgroundImage: `url(${fundo})` }}>
-        <Paragrafo>Restaurantes</Paragrafo>
+      <S.Content style={{ backgroundImage: `url(${whiteBackground})` }}>
+        <S.Text>Restaurantes</S.Text>
         <Link to="/">
-          <Image src={logo} alt=""></Image>
+          <S.Image src={logo} alt=""></S.Image>
         </Link>
 
-        <CartButton onClick={openCart}>
+        <S.CartButton onClick={openCart}>
           {items.length} produto(s) no carrinho
-        </CartButton>
-      </Content>
-      <Apresentacao
+        </S.CartButton>
+      </S.Content>
+      <S.Banner
         style={{
-          backgroundImage: `url(${restaurante.capa})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center'
+          backgroundImage: `url(${restaurante.capa})`
         }}
       >
         <div className="container">
           <h3>{restaurante.tipo}</h3>
           <p>{restaurante.titulo}</p>
         </div>
-      </Apresentacao>
+      </S.Banner>
     </>
   )
 }

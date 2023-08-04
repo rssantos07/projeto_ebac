@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { color } from '../../styles'
 
 export const Container = styled.div`
-  background-color: ${cores.branco};
+  background-color: ${color.white};
   font-size: 10px;
   height: 298px;
   text-align: center;
@@ -13,10 +13,10 @@ export const Image = styled.img`
   margin-top: 40px;
   margin-bottom: 32px;
 `
-export const Sociais = styled.img`
+export const Social = styled.img`
   margin: 0 8px;
 `
 
-export const Paragrafo = styled.p`
+export const Text = styled.p`
   margin-top: 80px;
 `

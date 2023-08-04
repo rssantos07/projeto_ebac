@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
-import AdicionarButton from '../Adicionar'
+import { color } from '../../styles'
 
 export const Cards = styled.div`
   display: grid;
@@ -15,8 +14,8 @@ export const Cards = styled.div`
 
 export const Card = styled.div`
   width: 304px;
-  background-color: ${cores.laranja};
-  color: ${cores.branco};
+  background-color: ${color.orange};
+  color: ${color.white};
   padding: 8px;
   margin-bottom: 32px;
   height: 338px;
@@ -28,13 +27,13 @@ export const Image = styled.img`
   height: 167px;
 `
 
-export const Titulo = styled.h3`
+export const Title = styled.h3`
   font-size: 16px;
   font-weight: 900;
   margin-bottom: 8px;
 `
 
-export const Paragrafo = styled.p`
+export const Text = styled.p`
   font-size: 14px;
   font-weight: 400;
   margin-bottom: 8px;
@@ -66,8 +65,8 @@ export const ModalContent = styled.div`
   max-width: 1024px;
   position: relative;
   z-index: 1;
-  background-color: ${cores.laranja};
-  color: ${cores.branco};
+  background-color: ${color.orange};
+  color: ${color.white};
 
 
   > div {

@@ -1,12 +1,11 @@
-import { Restaurante } from '../../pages/Home'
-import CardCardapio from '../CardCardapio'
+import CardMenu from '../CardMenu'
 import { List } from './styles'
 
 type Props = {
   dishs: Restaurante[]
 }
 
-const Cardapio = ({ dishs }: Props) => {
+const Menu = ({ dishs }: Props) => {
   const getOferta = (dishs: Restaurante) => {
     return dishs.destacado
   }
@@ -14,7 +13,7 @@ const Cardapio = ({ dishs }: Props) => {
     <List>
       {dishs.map((dish) => (
         <li key={dish.id}>
-          <CardCardapio
+          <CardMenu
             id={dish.id}
             image={dish.capa}
             country={dish.tipo}
@@ -29,4 +28,4 @@ const Cardapio = ({ dishs }: Props) => {
   )
 }
 
-export default Cardapio
+export default Menu
